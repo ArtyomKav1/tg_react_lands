@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import { useTelegram } from "../../hooks/useTelegram";
 
@@ -25,7 +25,7 @@ const getTotalPrise = (item: productType[]) => {
 
 
 function ProductList() {
-    const { tg } = useTelegram()
+    const { tg, queryId } = useTelegram()
     const [addedItems, setAddedItems] = useState<productType[]>([])
     const onAdd = (product: productType) => {
         const alredyAdded = addedItems.find(item => item.id === product.id)
@@ -47,7 +47,47 @@ function ProductList() {
             })
         }
 
+
+
     }
+
+
+
+
+
+
+    const onSendData = useCallback(() => {
+        const data = {
+            products: addedItems,
+            totalPrice: getTotalPrise(addedItems),
+            queryId
+        }
+        fetch("https://87.228.80.60:8000", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+        })
+    }, [])
+
+
+    useEffect(() => {
+        tg.onEvent("mainButtonCliked", onSendData)
+        return () => { tg.offEvent("mainButtonCliked", onSendData) }
+
+    }, [])
+
+
+
+
+
+
+
+
+
+
+
 
     return (
         <div className="flex flex-col justify-center">
