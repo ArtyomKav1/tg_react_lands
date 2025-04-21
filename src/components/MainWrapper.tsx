@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Header from "./Header/Header";
-import {  Route,  Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ProductList from "./ProductList/ProductList";
 import Form from "./Form/Form";
 import { useTelegram } from "../hooks/useTelegram";
@@ -10,7 +10,7 @@ import { useTelegram } from "../hooks/useTelegram";
 
 function MainWrapper() {
 
-    const {tg} = useTelegram()
+    const { tg } = useTelegram()
 
 
     useEffect(() => {
@@ -21,10 +21,10 @@ function MainWrapper() {
         //     setThemeParams(tg.themeParams || {});
         // });
     }, []);
-  
+
     console.log(tg)
     return (
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center ">
             <Header />
             <Routes>
                 <Route index element={<ProductList />} />
