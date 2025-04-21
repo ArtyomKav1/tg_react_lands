@@ -62,7 +62,7 @@ function ProductList() {
             totalPrice: getTotalPrise(addedItems),
             queryId
         }
-        fetch("https://87.228.80.60:8000", {
+        fetch("https://87.228.80.60:8000/web-data", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

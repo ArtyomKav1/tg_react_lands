@@ -27,7 +27,9 @@ function MainWrapper() {
         <div className="flex flex-col justify-center ">
             <Header />
             <Routes>
-                <Route index element={<ProductList />} />
+                <Route path={"/"} element={<ProductList />} />
+
+
                 <Route path={"form"} element={<Form />} />
             </Routes>
         </div>
