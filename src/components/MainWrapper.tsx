@@ -1,36 +1,35 @@
 import { useEffect } from "react";
+import Header from "./Header/Header";
+import {  Route,  Routes } from "react-router-dom";
+import ProductList from "./ProductList/ProductList";
+import Form from "./Form/Form";
+import { useTelegram } from "../hooks/useTelegram";
 
 
 
 
 function MainWrapper() {
-    //@ts-ignore
-    const tg = window.Telegram.WebApp
+
+    const {tg} = useTelegram()
 
 
     useEffect(() => {
         tg.ready()
         tg.expand()
-
         // setThemeParams(tg.themeParams || {});
         // tg.onEvent('themeChanged', () => {
         //     setThemeParams(tg.themeParams || {});
         // });
-
     }, []);
-    const closeWebApp = () => {
-        tg.close()
-    };
-
+  
+    console.log(tg)
     return (
         <div className="flex flex-col justify-center">
-            <p className="text-[32px] text-center ">Это приложение запущено внутри Telegram!</p>
-            <div className="flex flex-col border rounded-[8px] bg-amber-100">
-                <p>Init Data: {tg.initData}</p>
-                <p>User: {tg.initDataUnsafe?.user}</p>
-                <div>{tg.map((item: any) => <div>{item}</div>)}</div>
-            </div>
-            <button onClick={closeWebApp} className="py-[10px] px-[20px] bg-amber-400">Закрыть приложение</button>
+            <Header />
+            <Routes>
+                <Route index element={<ProductList />} />
+                <Route path={"form"} element={<Form />} />
+            </Routes>
         </div>
     );
 }
