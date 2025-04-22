@@ -9,7 +9,7 @@ function Header() {
     return (
         <div className="  flex flex-col pt-[10px]">
             <div className="flex justify-between ">
-                <div className="flex flex-col border rounded-[8px] bg-gray-600 text-white w-[48%] p-[5px]">
+                <div className="flex flex-col border rounded-[8px]  text-white w-[48%] p-[5px]">
                     <p>Init Data: {tg.initData}</p>
                     <p>User: {tg.initDataUnsafe?.user}</p>
                 </div>
