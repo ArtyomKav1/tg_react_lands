@@ -73,8 +73,8 @@ function ProductList() {
 
 
     useEffect(() => {
-        tg.onEvent("mainButtonCliked", onSendData)
-        return () => { tg.offEvent("mainButtonCliked", onSendData) }
+        tg.onEvent("mainButtonClicked", onSendData)
+        return () => { tg.offEvent("mainButtonClicked", onSendData) }
 
     }, [])
 
