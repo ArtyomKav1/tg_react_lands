@@ -13,9 +13,17 @@ function Header() {
                     <p>Init Data: {tg.initData}</p>
                     <p>User: {tg.initDataUnsafe?.user}</p>
                 </div>
-                <button onClick={onClose} className="w-[48%] py-[10px] px-[20px] bg-amber-400 rounded-[8px]">Закрыть приложение</button>
+                <button
+                    onClick={onClose}
+                    className="w-[48%] py-[10px] px-[20px] bg-theme-button-tg rounded-[8px] text-theme-button-text-tg">
+                    Закрыть приложение
+                </button>
             </div>
-            <button onClick={onToggleButton} className="py-[10px] px-[20px] bg-amber-400 rounded-[8px] mt-[15px]">btn</button>
+            <button
+                onClick={onToggleButton}
+                className="py-[10px] px-[20px] bg-theme-button-tg rounded-[8px] mt-[15px] text-theme-button-text-tg">
+                btn
+            </button>
         </div>
     );
 }

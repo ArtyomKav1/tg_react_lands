@@ -46,14 +46,7 @@ function ProductList() {
                 text: `buy ${getTotalPrise(newItems)}`
             })
         }
-
-
-
     }
-
-
-
-
 
 
     const onSendData = useCallback(() => {
@@ -82,20 +75,14 @@ function ProductList() {
 
 
 
-
-
-
-
-
-
-
     return (
         <div className="flex flex-col justify-center">
             ProductList:
             <div className="flex flex-wrap gap-[15px] justify-center pt-[20px]">
-                {products.map((item: productType) => (
-                    <ProductItem product={item} onAdd={onAdd} />
-                ))}
+                {products.map((item: productType) => {
+                    const added = addedItems.includes(item)
+                    return <ProductItem added={added} product={item} onAdd={onAdd} />
+                })}
             </div>
 
         </div>

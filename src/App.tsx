@@ -8,8 +8,8 @@ function App() {
   const isWebApp = window.Telegram?.WebApp
   return (
     <div className='p-[10px]'>
-      <h1 className='text-black/40'>Telegram WebApp Demo</h1>
-      {isWebApp ? <MainWrapper/> : <ErrorDevice />}
+      <h1 className='opacity-50'>Telegram WebApp Demo</h1>
+      {isWebApp ? <MainWrapper /> : <ErrorDevice />}
     </div>
   );
 }

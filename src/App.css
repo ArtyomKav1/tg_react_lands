@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
+@theme {
+  --color-theme-bg-tg: var(--tg-theme-bg-color);
+  --color-theme-text-tg: var(--tg-theme-text-color);
 
+  --color-theme-button-tg: var(--tg-theme-button-color);
+  --color-theme-button-text-tg: var(--tg-theme-button-text-color);
+}
 #root {
 
   margin: 0 ;
