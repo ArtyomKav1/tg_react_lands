@@ -6,7 +6,7 @@ import { useTelegram } from "../../hooks/useTelegram";
 
 
 function Form() {
-    const { tg } = useTelegram()
+    const { tg, queryId, onClose } = useTelegram()
     const [country, setCountry] = useState<string>()
     const [sity, setSity] = useState<string>()
     const [subject, setSubject] = useState<string>()
@@ -15,15 +15,24 @@ function Form() {
         const data = {
             country,
             sity,
-            subject
+            subject,
+            queryId
         }
         tg.sendData(JSON.stringify(data))
-    }, [country, sity, subject])
+        onClose()
+    }, [country, sity, subject, tg])
     useEffect(() => {
-        tg.onEvent("mainButtonCliked", onSendData)
-        return () => { tg.offEvent("mainButtonCliked", onSendData) }
+        if (!tg || !tg.onEvent) return;
 
-    }, [])
+        const eventName = "mainButtonClicked";
+        tg.onEvent(eventName, onSendData);
+
+        return () => {
+            if (tg.offEvent) {
+                tg.offEvent(eventName, onSendData);
+            }
+        };
+    }, [tg, onSendData])
 
 
     useEffect(() => {
